@@ -1,0 +1,4 @@
+clock /home/sawmer/.config/quickshell/clock/clock.qml
+calendar /home/sawmer/.config/quickshell/calendar/calendar.qml
+visualizer /home/sawmer/.config/quickshell/visualizer/visualizer.qml
+bar /home/sawmer/.config/quickshell/bar/bar.qml

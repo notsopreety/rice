@@ -1,0 +1,357 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 30,
+    "spacing": 2,
+    "margin-top": 2,
+    "margin-left": 0,
+    "margin-right": 0,
+
+    "modules-left": ["custom/cava", "group/system", "hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["mpris", "custom/weather", "clock"],
+    "modules-right": ["group/island", "tray", "group/status", "group/connectivity", "custom/dunst"],
+
+    "group/system": {
+        "orientation": "horizontal",
+        "modules": ["cpu", "memory", "temperature"],
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": true
+        }
+    },
+
+    "custom/cava": {
+        "exec": "~/.config/waybar/scripts/cava.sh",
+        "format": "{}"
+    },
+
+    "cpu": {
+        "interval": 10,
+        "format": "󰍛 {usage}%",
+        "rotate": 0,
+        "format-alt": "{icon0}{icon1}{icon2}{icon3}",
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+
+    "memory": {
+        "states": {
+            "c": 90,
+            "h": 60,
+            "m": 30
+        },
+        "interval": 30,
+        "format": "\udb83\udf86 {used}GB",
+        "rotate": 0,
+        "format-m": "\udb83\udf85 {used}GB",
+        "format-h": "\udb81\udcc5 {used}GB",
+        "format-c": "\uf421 {used}GB",
+        "format-alt": "\udb83\udf86 {percentage}%",
+        "max-length": 10,
+        "tooltip": true,
+        //"tooltip-format": "\udb83\udf86 {percentage}%\n\ue266 {used:0.1f}GB/{total:0.1f}GB",
+        "tooltip-format": "\udb83\udf86 Memory usage: {percentage}%\n\ue266 Used: {used:0.2f}GB / {total:0.2f}GB\n\uf85a Available: {avail:0.2f}GB\n\uf233 Swap used: {swapUsed:0.2f}GB / {swapTotal:0.2f}GB ({swapPercentage}%)"
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format": " {temperatureC}°C",
+        "interval": 5,
+        "tooltip": true,
+        "tooltip-format": "Temperature: {temperatureC}°C"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "persistent-workspaces": {
+            "*": 2
+        }
+    },
+
+    "hyprland/window": {
+        "format": " \uf303 {0}",
+        "rotate": 0,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*)@archlinux:(.*)": "$1 \uf489 ",
+            "(.*) \u2014 Mozilla Firefox": "$1 \udb80\ude39 ",
+            "(.*)Mozilla Firefox": "Firefox \udb80\ude39 ",
+            "(.*) - Visual Studio Code": "$1 \udb82\ude1e ",
+            "(.*) - Windsurf": "$1 \udb82\ude1e ",
+            "(.*)Visual Studio Code": "Code \udb82\ude1e ",
+            "(.*) - Code - OSS": "$1 \udb82\ude1e ",
+            "(.*)Code - OSS": "Code \udb82\ude1e ",
+            "(.*) \u2014 Dolphin": "$1 \udb80\ude4b ",
+            "(.*)Spotify": "Spotify \udb81\udcc7 ",
+            "(.*)Steam": "Steam \udb81\udcd3 ",
+            "(.*) - Discord": "$1 \uf1ff ",
+            "(.*)Netflix": "Netflix \udb81\udf46 ",
+            "(.*) \u2014 Google chrome": "$1 \ue743 ",
+            // "(.*)Google chrome": "Google chrome \ue743 ",
+            "(.*) \u2014 Github": "$1 \ue709 ",
+            "(.*)Github - Google Chrome": "Github \ue709 "
+        },
+        "max-length": 50
+    },
+
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "rotate": 0,
+        "format-alt": "{:%R \udb80\udced %d\u00b7%m\u00b7%y}",
+        "tooltip-format": "<span>{calendar}</span>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b>{}</b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    "group/status": {
+        "orientation": "horizontal",
+        "modules": ["backlight", "pulseaudio", "battery"]
+    },
+
+    "group/connectivity": {
+        "orientation": "horizontal",
+        "modules": ["network", "bluetooth"],
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": false
+        }
+    },
+
+    "group/island": {
+        "orientation": "horizontal",
+        "modules": ["custom/dynamic_island","custom/updates", "idle_inhibitor", "power-profiles-daemon", "custom/screenshot"],
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": false
+        }
+    },
+
+    "tray": {
+        "icon-size": 12,
+        "spacing": 10,
+        "pass-through": false
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "rotate": 0,
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-",
+        "min-length": 6,
+        "tooltip": true,
+        "tooltip-format": "Backlight level: {icon} {percent}%"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "tooltip-format": "{volume}% - {desc}"
+    },
+
+    "network": {
+        "tooltip": true,
+        "format-wifi": "\uf1eb ",
+        "rotate": 0,
+        "format-ethernet": "\udb80\ude00 ",
+        "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+        "format-linked": "\udb80\ude00 {ifname} (No IP)",
+        "format-disconnected": "\udb81\uddaa ",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-alt": "<span foreground='#99ffdd'>\uf019 {bandwidthDownBytes}</span> <span foreground='#ffcc66'>\uf093 {bandwidthUpBytes}</span>",
+        "interval": 2,
+        "on-click-right": "kitty nmtui"
+    },
+
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂯",
+        "format-connected-battery": "󰂯 {battery}%",
+        "tooltip-format": "{device_alias}",
+        "on-click": "blueman-manager"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "{time}"
+    },
+
+    "custom/updates": {
+        "format": "{}",
+        "interval": 3600,
+        "exec": "~/.config/waybar/scripts/updates.sh",
+        "return-type": "json",
+        "tooltip": true,
+        "on-click": "kitty sh -c 'sudo pacman -Syu && yay -Syu && flatpak update'"
+    },
+
+    "custom/nepcal": {
+        "exec": "curl -s 'https://nepali-calender-ten.vercel.app/fast'",
+        "tooltip": true,
+        "format": "{0}",
+        "interval": 3600,
+        "return-type": "json"
+    },
+
+    "custom/mediaplayer": {
+        "format": "{}",
+        "interval": 2,
+        "exec": "~/.config/waybar/scripts/mediaplayer.sh",
+        "return-type": "json",
+        "tooltip": true,
+        "on-click": "playerctl play-pause",
+        "on-click-middle": "playerctl previous",
+        "on-scroll-up": "playerctl volume 5%+",
+        "on-scroll-down": "playerctl volume 5%-"
+    },
+    "mpris": {
+        "justify": "center",
+        "dynamic-importance-order" : ["title", "artist", "album"],
+        "dynamic-order:" : ["title", "artist", "album"],
+        "format": "{player_icon} {dynamic}",
+        "format-paused": "{status_icon} <i> {dynamic} </i>",
+        "format-stopped": "{status_icon}",
+        "interval": 1,
+        "dynamic-separator": "  ",
+        "player-icons": {
+        "default": "\u25b6",
+        "mpv": "\ud83c\udfb5",
+        "spotify": "\uf1bc",
+        "vlc": "\uf8e0"
+        },
+        "status-icons": {
+        "paused": "\uf04c",
+        "playing": "\uf04b",
+        "stopped": "\uf04d"
+        },
+        "max-length": 20,
+        "on-click": "playerctl play-pause",
+        "on-click-middle": "playerctl previous",
+        "on-scroll-up": "playerctl position 1-",
+        "on-scroll-down": "playerctl position 1+",
+        "tooltip": true,
+        "tooltip-format": "{title}\nby: {artist}\n{position} / {length}\nPlayer: {player}\n\n󰐎 Click to play/pause\n󰺤 Scroll to seek\n󰙤 Middle click previous\n󰙢 Right click next",  
+        "tooltip-format-stopped": "Player: {player}\n\n󰐎 Click to play/pause\n󰺤 Scroll to seek\n󰙤 Middle click previous\n󰙢 Right click next"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "rotate": 0,
+        "format-icons": {
+            "activated": "\udb80\udd76",
+            "deactivated": "\udb81\udeca"
+        },
+        "justify": "center",
+        "tooltip": "true",
+        "tooltip-format-activated": "<span foreground='#98c379'>\udb80\udd76 Caffeine Mode Active</span>\nPrevents system from going to sleep",
+        "tooltip-format-deactivated": "<span foreground='#e06c75'>\udb81\udeca Caffeine Mode Inactive</span>\nSystem will follow normal power settings"
+    },
+
+    "custom/dynamic_island": {
+        "format": "⎚",
+        "tooltip": true,
+        "tooltip-format": "Dynamic Island\n▱ Click to toggle Island\n▰ Right click to toggle island floating",
+        "interval": 1,
+        "escape": true,
+        "on-click": "~/.config/scripts/toggle_quickshell.sh",
+        "on-click-right": "qs ipc -p ~/.config/quickshell/dynamic_island/shell.qml call floating toggle"
+    },
+
+    "custom/screenshot": {
+        "format": "󰄀",
+        "tooltip": true,
+        "tooltip-format": "Screenshot\nClick to take screenshot",
+        "on-click": "quickshell -c hyprquickshot -n"
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "exec": "~/.config/waybar/scripts/weather.sh",
+        "return-type": "json",
+        "interval": 1800
+    },
+    "custom/dunst": {
+        "format": "{icon} {0}",
+        "rotate": 0,
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": "",
+            "dnd-none": "",
+            "email-notification": "<span foreground='white'><sup></sup></span>",
+            "chat-notification": "󱋊<span foreground='white'><sup></sup></span>",
+            "warning-notification": "󱨪<span foreground='yellow'><sup></sup></span>",
+            "error-notification": "󱨪<span foreground='red'><sup></sup></span>",
+            "network-notification": "󱂇<span foreground='white'><sup></sup></span>",
+            "battery-notification": "󰁺<span foreground='white'><sup></sup></span>",
+            "update-notification": "󰚰<span foreground='white'><sup></sup></span>",
+            "music-notification": "󰝚<span foreground='white'><sup></sup></span>",
+            "volume-notification": "󰕿<span foreground='white'><sup></sup></span>",
+            "dnd": "",
+            "none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which dunstctl",
+        "exec": "~/.config/waybar/scripts/dunst.sh",
+        "on-scroll-down": "sleep 0.1 && dunstctl history-pop",
+        "on-click": "dunstctl set-paused toggle",
+        "on-click-middle": "dunstctl history-clear",
+        "interval": 1,
+        "tooltip": true,
+        "escape": true,
+        "menu": "on-click-right",
+        "menu-file": "${HOME}/.config/waybar/dunst.xml",
+        "menu-actions": {
+            "show": "dunstctl history-pop",
+            "toggle-dnd": "dunstctl set-paused toggle",
+            "clear": "dunstctl history-clear",
+            "close-all": "dunstctl close-all"
+        }
+    }
+    
+}

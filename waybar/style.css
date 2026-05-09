@@ -1,0 +1,354 @@
+@import "/home/sawmer/.cache/wal/colors-waybar.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", monospace;
+    font-size: 12px;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+window#waybar {
+    background: alpha(@background, 0.78);
+    border-radius: 20px;
+    border: 1px solid alpha(@color8, 0.45);
+    box-shadow: 0 10px 40px alpha(@color0, 0.6), inset 0 1px 0 alpha(@foreground, 0.08);
+}
+
+tooltip {
+    background: alpha(@color1, 0.22);
+    border: 1px solid alpha(@color3, 0.4);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px alpha(@color0, 0.5);
+}
+
+tooltip label {
+    color: @foreground;
+    padding: 5px;
+}
+
+/* Groups with distinct warm tones */
+#group-system {
+    color: @foreground;
+    background: alpha(@color1, 0.28);
+    border-radius: 8px;
+    padding: 0 2px;
+    border: 1px solid alpha(@color3, 0.35);
+}
+
+#group-status {
+    color: @foreground;
+    background: alpha(@color6, 0.32);
+    border-radius: 8px;
+    padding: 0 2px;
+    border: 1px solid alpha(@color4, 0.35);
+}
+
+#group-connectivity {
+    color: @foreground;
+    background: alpha(@color3, 0.28);
+    border-radius: 8px;
+    padding: 0 2px;
+    border: 1px solid alpha(@color5, 0.35);
+}
+
+#group-island {
+    color: @foreground;
+    background: alpha(@color5, 0.28);
+    border-radius: 8px;
+    padding: 0 2px;
+    border: 1px solid alpha(@color6, 0.35);
+}
+
+#group-system > .module,
+#group-status > .module,
+#group-connectivity > .module,
+#group-island > .module {
+    margin: 0;
+}
+
+/* Workspaces */
+#workspaces {
+    margin: 1px 2px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: alpha(@color8, 0.85);
+    background: transparent;
+    border-radius: 4px;
+    margin: 0 1px;
+    transition: all 0.3s ease;
+    min-width: 18px;
+}
+
+#workspaces button:hover {
+    background: alpha(@color4, 0.55);
+    color: @foreground;
+}
+
+#workspaces button.active {
+    background: alpha(@color3, 0.65);
+    color: @foreground;
+    box-shadow: 0 2px 8px alpha(@color3, 0.35);
+}
+
+#workspaces button.urgent {
+    background: alpha(@color2, 0.8);
+    color: @foreground;
+}
+
+/* Window - pink beige tint */
+#window {
+    color: @foreground;
+    padding: 0 5px;
+    margin: 1px 0;
+    background: alpha(@color4, 0.32);
+    border-radius: 5px;
+    border: 1px solid alpha(@color5, 0.38);
+}
+
+/* Clock - warm peach accent */
+#clock {
+    color: @foreground;
+    font-weight: bold;
+    padding: 0 7px;
+    background: alpha(@color5, 0.55);
+    border-radius: 6px;
+    margin: 1px 0;
+    box-shadow: 0 2px 8px alpha(@color5, 0.25);
+}
+
+#custom-nepcal {
+    color: @foreground;
+    padding: 0 5px;
+    margin: 1px 0;
+    background: alpha(@color6, 0.35);
+    border-radius: 5px;
+    border: 1px solid alpha(@color4, 0.38);
+}
+
+#custom-mediaplayer {
+    color: @foreground;
+    padding: 0 5px;
+    margin: 1px 0;
+    background: alpha(@color4, 0.38);
+    border-radius: 5px;
+    border: 1px solid alpha(@color3, 0.4);
+}
+
+#mpris {
+    color: @foreground;
+    padding: 0 5px;
+    margin: 1px 0;
+    background: alpha(@color4, 0.42);
+    border-radius: 5px;
+    border: 1px solid alpha(@color3, 0.42);
+}
+
+
+#custom-cava {
+    color: @color2;
+    padding: 0 4px;
+    margin: 1px 0;
+    font-size: 10px;
+    min-width: 80px;
+}
+
+#idle_inhibitor {
+    color: alpha(@color8, 0.9);
+    padding: 0 4px;
+    margin: 1px 0;
+    border-radius: 5px;
+}
+
+#custom-dynamic_island {
+    color: @foreground;
+    padding: 0 4px;
+    margin: 1px 0;
+    border-radius: 5px;
+}
+
+#custom-screenshot {
+    color: @foreground;
+    padding: 0 4px;
+    margin: 1px 0;
+    border-radius: 5px;
+}
+
+#custom-weather {
+    color: @foreground;
+    padding: 0 5px;
+    margin: 1px 0;
+    background: alpha(@color6, 0.38);
+    border-radius: 5px;
+    border: 1px solid alpha(@color4, 0.4);
+}
+
+#idle_inhibitor.activated {
+    color: @color10;
+    /* background: alpha(@color2, 0.45); */
+}
+
+#idle_inhibitor.deactivated {
+    color: alpha(@color8, 0.75);
+}
+
+/* Tray */
+#tray {
+    padding: 0 2px;
+    margin: 1px 0;
+    background: transparent;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+    opacity: 0.7;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+#tray > widget {
+    margin: 0 1px;
+}
+
+/* Tray menu styling with warm tints */
+menu {
+    background: alpha(@color4, 0.18);
+    border: 1px solid alpha(@color5, 0.45);
+    border-radius: 8px;
+    box-shadow: 0 10px 40px alpha(@color0, 0.55);
+}
+
+menuitem {
+    color: @foreground;
+    padding: 3px 6px;
+}
+
+menuitem:hover {
+    background: alpha(@color3, 0.45);
+}
+
+menuitem label {
+    color: @foreground;
+}
+
+/* Modules */
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#pulseaudio,
+#network,
+#bluetooth,
+#battery,
+#custom-updates,
+#custom-dunst,
+#custom-cava,
+#custom-powermenu,
+#power-profiles-daemon {
+    padding: 0 4px;
+    margin: 0;
+    background: transparent;
+    border-radius: 4px;
+    color: @foreground;
+    transition: all 0.3s ease;
+}
+
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#backlight:hover,
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#battery:hover,
+#custom-updates:hover,
+#custom-dunst:hover,
+#custom-cava:hover,
+#custom-dynamic_island:hover,
+#idle_inhibitor:hover,
+#custom-screenshot:hover,
+#custom-weather:hover,
+#custom-powermenu:hover,
+#power-profiles-daemon:hover,
+#tray:hover,
+
+#pulseaudio.muted {
+    color: @color9;
+}
+
+#network.disconnected {
+    color: @color9;
+}
+
+#battery.charging {
+    color: @color10;
+}
+
+#battery.warning:not(.charging) {
+    color: @color11;
+}
+
+#battery.critical:not(.charging) {
+    color: @color9;
+    animation: blink 1s linear infinite;
+}
+
+#battery {
+    color: @color14;
+}
+
+#cpu {
+    color: @color12;
+}
+
+#memory {
+    color: @color13;
+}
+
+#temperature {
+    color: @color11;
+}
+
+#backlight {
+    color: @color15;
+}
+
+#pulseaudio {
+    color: @color6;
+}
+
+#network {
+    color: @color3;
+}
+
+#bluetooth {
+    color: @color4;
+}
+
+#custom-updates {
+    color: @color5;
+}
+
+#custom-dunst {
+    color: @color7;
+}
+
+#custom-powermenu {
+    color: @color2;
+}
+
+#power-profiles-daemon {
+    color: @color6;
+}
+
+@keyframes blink {
+    to {
+        color: @background;
+    }
+}
+

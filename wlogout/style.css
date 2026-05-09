@@ -1,0 +1,116 @@
+/***
+ *    ┓ ┏┓ ┏┓┏┓┏┓┳┳┏┳┓
+ *    ┃┃┃┃ ┃┃┃┓┃┃┃┃ ┃ 
+ *    ┗┻┛┗┛┗┛┗┛┗┛┗┛ ┻ 
+ */
+
+/* wallust-wlogout */
+
+/* Importing matugen colors */
+@import '/home/sawmer/.cache/wal/colors-waybar.css';
+
+/* Define additional colors from wal palette */
+@define-color surface-alpha rgba(8, 9, 14, 0.85);
+@define-color primary @color5;
+@define-color shadow-color rgba(8, 9, 14, 0.6);
+@define-color glow-color rgba(62, 102, 143, 0.3);
+
+window {
+    font-family: GeistMono Nerd Font Propo;
+    font-size: 16pt;
+    color: @foreground;
+    background-color: @surface-alpha;
+    box-shadow: 0 0 30px 10px @shadow-color,
+                0 0 50px 20px rgba(62, 102, 143, 0.15);
+}
+
+/* BUTTONS */
+button {
+    background-repeat: no-repeat;
+    background-position: center 40%;
+    background-size: 20%;
+    background-color: transparent;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s ease-in;
+    box-shadow: 0 0 10px 2px transparent;
+    border-radius: 36px;
+    margin: 10px;
+
+    min-width: 50px;
+    min-height: 50px;
+    padding: 20px;
+    border: 1px solid @color1;
+}
+
+/* TEXT LABELS (THIS WAS MISSING) */
+label {
+    color: @foreground;
+    font-size: 12pt;
+    font-weight: 500;
+    margin-top: 18px;
+}
+
+/* FOCUS */
+button:focus {
+    box-shadow: 0 0 12px 2px @glow-color,
+                0 0 20px 4px rgba(92, 145, 180, 0.15);
+    outline-style: none;
+    background-size: 20%;
+    border-color: @color6;
+}
+
+/* HOVER */
+button:hover {
+    background-size: 30%;
+    outline-style: none;
+    box-shadow: 0 0 15px 3px @shadow-color,
+                0 0 25px 5px @glow-color,
+                inset 0 0 10px rgba(92, 145, 180, 0.2);
+    background-color: @primary;
+    border-color: @color6;
+    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682),
+                box-shadow 0.5s ease-in;
+}
+
+/* ICONS */
+#shutdown {
+    background-image: image(url("./icons/power.png"));
+}
+#shutdown:hover {
+    background-image: image(url("./icons/power-hover.png"));
+}
+
+#logout {
+    background-image: image(url("./icons/logout.png"));
+}
+#logout:hover {
+    background-image: image(url("./icons/logout-hover.png"));
+}
+
+#reboot {
+    background-image: image(url("./icons/restart.png"));
+}
+#reboot:hover {
+    background-image: image(url("./icons/restart-hover.png"));
+}
+
+#lock {
+    background-image: image(url("./icons/lock.png"));
+}
+#lock:hover {
+    background-image: image(url("./icons/lock-hover.png"));
+}
+
+#sleep {
+    background-image: image(url("./icons/sleep.png"));
+}
+#sleep:hover {
+    background-image: image(url("./icons/sleep-hover.png"));
+}
+
+#hibernate {
+    background-image: image(url("./icons/hibernate.png"));
+}
+#hibernate:hover {
+    background-image: image(url("./icons/hibernate-hover.png"));
+}
