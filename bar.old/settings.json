@@ -1,0 +1,18 @@
+{
+    "height": 35,
+    "bgOpacity": 0.5,
+    "usePywal": true,
+    "position": "top",
+    "radius": 12,
+    "margins": {
+        "top": 4,
+        "bottom": 4,
+        "left": 10,
+        "right": 10
+    },
+    "groups": {
+        "left": [],
+        "center": ["clock"],
+        "right": ["network", "bluetooth", "audio", "battery"]
+    }
+}
